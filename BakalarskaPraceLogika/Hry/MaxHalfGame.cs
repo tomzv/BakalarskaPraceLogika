@@ -72,16 +72,17 @@ namespace bakalarkaDEMO
                 return false;
             }
 
-                     
-            int seed = DateTime.Now.Second;
-            Random rnd = new Random(seed);
-            double move = rnd.NextDouble();
-
             List<int> optimalMoves = this.GetOptimalMoves();
             List<int> possibleMoves = this.GetPossibleMoves();
 
             //Pokud neexistuje mozny tah, vrat false
             if (possibleMoves.Count == 0) return false;
+
+            int seed = DateTime.Now.Second;
+            Random rnd = new Random(seed);
+            double move = rnd.NextDouble();
+            int randomMove = rnd.Next(possibleMoves.Count);
+            
 
 
             try
@@ -92,7 +93,7 @@ namespace bakalarkaDEMO
                     
                     if(optimalMoves.Count == 0)
                     {
-                        CurrentChipCount -= possibleMoves.ElementAt(0);
+                        CurrentChipCount -= possibleMoves.ElementAt(randomMove);
 
                     }
                     //Pokud optimalni tah neexistuje, provede prvni mozny tah
@@ -106,7 +107,7 @@ namespace bakalarkaDEMO
                 else
                 {
 
-                    CurrentChipCount -= possibleMoves.ElementAt(0);
+                    CurrentChipCount -= possibleMoves.ElementAt(randomMove);
                     return true;
                 }
             }

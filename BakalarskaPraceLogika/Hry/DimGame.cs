@@ -68,7 +68,9 @@ namespace bakalarkaDEMO
             int seed = DateTime.Now.Second;
             Random rnd = new Random(seed);
             double move = rnd.NextDouble();
-                       
+            int randomMove = rnd.Next(possibleMoves.Count);
+
+
 
             try
             {
@@ -77,7 +79,7 @@ namespace bakalarkaDEMO
                 {
                     if(optimalMoves.Count == 0)
                     {
-                        CurrentChipCount -= possibleMoves.ElementAt(0);
+                        CurrentChipCount -= possibleMoves.ElementAt(randomMove);
                     }
                     //Pokud optimalni tah neexistuje, provede prvni mozny tah
                     else
@@ -88,7 +90,7 @@ namespace bakalarkaDEMO
                 //AI provede prvni mozny tah
                 else
                 {
-                    CurrentChipCount -= possibleMoves.ElementAt(0);
+                    CurrentChipCount -= possibleMoves.ElementAt(randomMove);
                 }
             }
                     

@@ -33,6 +33,7 @@ namespace bakalarkaDEMO
             int seed = DateTime.Now.Second;
             Random rnd = new Random(seed);
             double move = rnd.NextDouble();
+            int randomMove = rnd.Next(possibleMoves.Count);
 
 
             try
@@ -47,10 +48,9 @@ namespace bakalarkaDEMO
                 else
                 {
 
-                    
-                    int wrongMove = rnd.Next(CurrentChipCount-1)+1;
-                    CurrentChipCount -= wrongMove;
-                    
+
+                    CurrentChipCount -= possibleMoves.ElementAt(randomMove);
+
                 }
             }
             catch (IndexOutOfRangeException)

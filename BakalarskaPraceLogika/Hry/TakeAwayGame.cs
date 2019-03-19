@@ -128,7 +128,8 @@ namespace bakalarkaDEMO
             int seed = DateTime.Now.Second;
             Random rnd = new Random(seed);
             double move = rnd.NextDouble();
-                  
+            int randomMove = rnd.Next(possibleMoves.Count);
+
 
 
             try
@@ -138,7 +139,7 @@ namespace bakalarkaDEMO
                 {
                     if(optimalMoves.Count == 0)
                     {
-                        this.CurrentChipCount -= possibleMoves.ElementAt(0);
+                        this.CurrentChipCount -= possibleMoves.ElementAt(randomMove);
                     }
                     //Pokud optimalni tah neexistuje, provede prvni mozny tah
                     else
@@ -152,7 +153,7 @@ namespace bakalarkaDEMO
                 {
                     
 
-                    this.CurrentChipCount -= possibleMoves.ElementAt(0);
+                    this.CurrentChipCount -= possibleMoves.ElementAt(randomMove);
 
                     return true;
                 }

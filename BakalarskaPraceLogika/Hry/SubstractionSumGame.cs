@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace bakalarkaDEMO
 {
-    class SubstractionSumGame : IAIPlayable, ISpragueGrundy
+    class SubstractionSumGame : IAIPlayable
     {
         public ISpragueGrundy[] games { get; set; }
         public int CurrentChipCount { get; set; }
@@ -103,7 +103,8 @@ namespace bakalarkaDEMO
                     {
                         if (games[i].GetPossibleMoves().Count != 0)
                         {
-                            games[i].CurrentChipCount -= games[i].GetPossibleMoves()[0];
+                            int randomMove = rnd.Next(games[i].GetPossibleMoves().Count);
+                            games[i].CurrentChipCount -= games[i].GetPossibleMoves()[randomMove];
                             return true;
                         }
                     }
@@ -115,7 +116,8 @@ namespace bakalarkaDEMO
                     {
                         if (games[i].GetPossibleMoves().Count != 0)
                         {
-                            games[i].CurrentChipCount -= games[i].GetPossibleMoves()[0];
+                            int randomMove = rnd.Next(games[i].GetPossibleMoves().Count);
+                            games[i].CurrentChipCount -= games[i].GetPossibleMoves()[randomMove];
                             return true;
                         }
                     }
@@ -130,12 +132,7 @@ namespace bakalarkaDEMO
 
             return false;
         }
-
-        public void FindPNSG()
-        {
-            throw new NotImplementedException();
-        }
-
+              
         public int GetCurrentSGValue()
         {
             int result = 0;
@@ -148,12 +145,7 @@ namespace bakalarkaDEMO
 
             return result;
         }
-
-        public List<int> GetPossibleMoves()
-        {
-            throw new NotImplementedException();
-        }
-
+              
        
     }
 }
